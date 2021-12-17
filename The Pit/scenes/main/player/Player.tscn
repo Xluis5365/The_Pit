@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/main/bullet0.png" type="Texture" id=5]
 [ext_resource path="res://assets/other/heartsui/Heart2Half.png" type="Texture" id=6]
 [ext_resource path="res://assets/other/gunshot_0_1.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/main/character/ThePitsCharacterSpriteSheet (1).png" type="Texture" id=8]
+[ext_resource path="res://assets/main/character/BasicAnimation.png" type="Texture" id=8]
 [ext_resource path="res://assets/other/heartsui/HeartHalf.png" type="Texture" id=9]
 [ext_resource path="res://assets/other/heartsui/HeartFull.png" type="Texture" id=10]
 [ext_resource path="res://assets/main/bullet1.png" type="Texture" id=11]
@@ -89,7 +89,7 @@ states/RunPointingUp/node = SubResource( 25 )
 states/RunPointingUp/position = Vector2( 119, 162 )
 transitions = [ "Idle", "Run", SubResource( 26 ), "Run", "Idle", SubResource( 27 ), "Idle", "RunPointingUp", SubResource( 28 ), "RunPointingUp", "Idle", SubResource( 29 ), "Idle", "Damaged", SubResource( 30 ), "LookingDown(OnlyInAir)", "Idle", SubResource( 32 ), "Idle", "LookingDown(OnlyInAir)", SubResource( 33 ), "Run", "RunPointingUp", SubResource( 34 ), "Idle", "FallLookingUp", SubResource( 35 ), "FallLookingUp", "Idle", SubResource( 36 ), "Idle", "FallingNormal", SubResource( 37 ), "FallingNormal", "Idle", SubResource( 38 ), "FallingNormal", "FallLookingUp", SubResource( 39 ), "FallingNormal", "LookingDown(OnlyInAir)", SubResource( 40 ), "RunPointingUp", "Run", SubResource( 43 ), "Damaged", "Idle", SubResource( 44 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -79, 164 )
+graph_offset = Vector2( -222, 60 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=42]
 
@@ -146,8 +146,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "Idle"
-length = 0.7
-loop = true
+length = 0.9
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -155,10 +155,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 7, 8, 9 ]
+"values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -219,7 +219,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=18]
 resource_name = "Run"
-length = 0.3
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -228,10 +228,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 3 ]
+"values": [ 6, 7, 8, 9 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -349,7 +349,7 @@ scale = Vector2( 4, 4 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 hframes = 5
-vframes = 5
+vframes = 2
 frame = 6
 region_rect = Rect2( 24, 14, 12, 14 )
 
