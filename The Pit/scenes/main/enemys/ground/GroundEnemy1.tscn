@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/main/enemys/ground/GroundEnemy1.gd" type="Script" id=1]
+[ext_resource path="res://assets/main/enemys/ground/dmg-5-7.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "walking",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 17.5, 21 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 23.5, 22 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20.5, 22 )
+
+[node name="GroundEnemy1" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ShellDrop" type="Position2D" parent="."]
+position = Vector2( -9, -9 )
+scale = Vector2( 2, 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 1 )
+animation = "walking"
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4.5, 1 )
+shape = SubResource( 4 )
+
+[node name="FloorChecker" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 25 )
+collision_mask = 2
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 3 )
+
+[node name="BulletDetector" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector"]
+position = Vector2( -2.5, 0 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="area_entered" from="BulletDetector" to="." method="_on_BulletDetector_area_entered"]
