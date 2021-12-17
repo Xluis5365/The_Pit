@@ -378,7 +378,8 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-smoothing_speed = 8.0
+smoothing_enabled = true
+smoothing_speed = 4.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
